@@ -1,0 +1,89 @@
+​using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Contoh_Penerapan_Abstract_Class
+{
+    public abstract class Hewan
+    {
+        private int _beratBadan;
+
+        public int beratBadan
+        {
+            get { return _beratBadan; }
+            set
+            {
+                if (value <= 0)
+                    value = 1;
+                else
+                    _beratBadan = value;
+            }
+        }
+        //Ini adalah abstract method
+        public abstract void nama();
+        public abstract void kaki();
+    }
+    class Kucing : Hewan
+    {
+        public Kucing()
+        {
+            beratBadan = 4;
+        }
+
+        //Mengimplementasikan method Abstract
+        public override void nama()
+        {
+            Console.WriteLine("==== Kucing ====");
+        }
+
+        public override void kaki()
+        {
+            Console.WriteLine("Jumlah kaki : 4");
+        }
+    }
+
+    class Elang : Hewan
+    {
+        public Elang()
+        {
+            beratBadan = 7;
+        }
+
+        //Mengimplementasikan method Abstract
+        public override void nama()
+        {
+            Console.WriteLine("==== Elang ====");
+        }
+
+        public override void kaki()
+        {
+            Console.WriteLine("Jumlah kaki : 2");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("----- BINATANG -----\n");
+
+            Kucing a = new Kucing();
+            a.nama();
+            a.kaki();
+
+            Console.WriteLine("Berat badan : " + a.beratBadan + "kg\n");
+
+            Console.WriteLine();
+
+            Elang b = new Elang();
+            b.nama();
+            b.kaki();
+
+            Console.WriteLine("Berat badan : " + b.beratBadan + "kg\n");
+
+            Console.ReadKey();
+        }
+    }
+}
