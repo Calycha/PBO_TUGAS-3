@@ -1,0 +1,143 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Contoh_Penerapan_Interface
+{
+    public abstract class Hewan
+    {
+        private int _beratBadan;
+
+        public int beratBadan
+        {
+            get { return _beratBadan; }
+            set
+            {
+                if (value <= 0)
+                    value = 1;
+                else
+                    _beratBadan = value;
+            }
+        }
+        //Abstract
+        public abstract void nama();
+        public abstract void kaki();
+    }
+    //Interface
+    public interface IKarnivore
+    {
+        void karnivora();
+    }
+    public interface IHerbivora
+    {
+        void Herbivora();
+    }
+
+    class Kucing : Hewan
+    {
+        public Kucing()
+        {
+            beratBadan = 4;
+        }
+
+        //Mengimplementasikan method Abstract
+        public override void nama()
+        {
+            Console.WriteLine("=== Kucing ===");
+        }
+
+        public override void kaki()
+        {
+            Console.WriteLine("Jumlah kaki : 4");
+        }
+        //Mengimplementasikan method Interface
+        public void Karnivora()
+        {
+            Console.WriteLine("Jenis hewan : Karnivora");
+            Console.WriteLine("Makanan : Daging");
+        }
+
+    }
+
+    class Elang : Hewan
+    {
+        public Elang()
+        {
+            beratBadan = 7;
+        }
+
+        //Mengimplementasikan method Abstract
+        public override void nama()
+        {
+            Console.WriteLine("=== Elang ===");
+        }
+
+        public override void kaki()
+        {
+            Console.WriteLine("Jumlah kaki : 2");
+        }
+        //Mengimplementasikan method Interface
+        public void Karnivora()
+        {
+            Console.WriteLine("Jenis hewan : Karnivora");
+            Console.WriteLine("Makanan : Daging");
+        }
+    }
+    class Sapi : Hewan
+    {
+        public Sapi()
+        {
+            beratBadan = 10;
+        }
+
+        //Mengimplementasikan method Abstract
+        public override void nama()
+        {
+            Console.WriteLine("=== Sapi ===");
+        }
+        public override void kaki()
+        {
+            Console.WriteLine("Jumlah kaki : 4");
+        }
+        //Mengimplementasikan method Interface
+        public void Herbivora()
+        {
+            Console.WriteLine("Jenis hewan : Herbivora");
+            Console.WriteLine("Makanan : Tumbuhan");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("------ BINATANG ------\n");
+
+            Kucing a = new Kucing();
+            a.nama();
+            a.kaki();
+            a.Karnivora();
+
+            Console.WriteLine("Berat badan : " + a.beratBadan + "kg\n");
+
+            Elang b = new Elang();
+            b.nama();
+            b.kaki();
+            b.Karnivora();
+
+
+            Console.WriteLine("Berat badan : " + b.beratBadan + "kg\n");
+
+            Sapi c = new Sapi();
+            c.nama();
+            c.kaki();
+            c.Herbivora();
+
+            Console.WriteLine("Berat badan : " + c.beratBadan + "kg\n");
+
+            Console.ReadKey();
+        }
+    }
+}
